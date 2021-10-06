@@ -1,6 +1,6 @@
 const root = "/forum";
 
-export const path = {
+export const paths = {
   root: root,
   create: `${root}/create`,
   list: `${root}/list`,

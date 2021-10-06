@@ -1,6 +1,6 @@
 import { Route, Switch } from "react-router";
 
-import { path } from "../../path";
+import { paths } from "../../path";
 
 import { ForumCreatePage } from "../create";
 import { ForumDetailPage } from "../detail";
@@ -11,11 +11,11 @@ import { ForumRootPage } from "../root";
 export function ForumPage() {
   return (
     <Switch>
-      <Route path={path.create} component={ForumCreatePage} />
-      <Route path={path.detail} component={ForumDetailPage} />
-      <Route path={path.edit} component={ForumEditPage} />
-      <Route path={path.list} component={ForumListPage} />
-      <Route path={path.root} component={ForumRootPage} />
+      <Route path={paths.create} component={ForumCreatePage} />
+      <Route path={paths.detail} component={ForumDetailPage} />
+      <Route path={paths.edit} component={ForumEditPage} />
+      <Route path={paths.list} component={ForumListPage} />
+      <Route path={paths.root} component={ForumRootPage} />
     </Switch>
   );
 }

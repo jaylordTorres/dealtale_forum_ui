@@ -1,5 +1,5 @@
 const root = "";
 
-export const path = {
+export const paths = {
   root: root,
 };
