@@ -4,5 +4,6 @@ export const path = {
   root: root,
   create: `${root}/create`,
   list: `${root}/list`,
-  item: `${root}/:id`,
+  detail: `${root}/detail/:id`,
+  edit: `${root}/edit/:id`,
 };
