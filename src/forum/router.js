@@ -1,8 +1,8 @@
 import { ForumPage } from "./page/forum";
-import { path } from "./path";
+import { paths } from "./path";
 
 export const ForumRouter = {
-  key: path.root,
-  path: path.root,
+  key: paths.root,
+  path: paths.root,
   component: ForumPage,
 };
