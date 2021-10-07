@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 
 import { generateID } from "../../util/string";
 import { useService } from "../service/hook";
@@ -11,7 +11,10 @@ export function useSession() {
     throw new Error("useSession must be wrapped inside SessionProvider.");
   }
 
-  return { id: session.id };
+  return {
+    id: session.id,
+    isOwner: session.isOwner,
+  };
 }
 
 // private
@@ -20,6 +23,13 @@ export function useSessionProvider() {
   const {
     store: { session: SessionStore },
   } = useService();
+
+  const isOwner = useCallback(
+    (id) => {
+      return String(id) === String(value.id);
+    },
+    [value]
+  );
 
   // initialized user session
   useEffect(() => {
@@ -38,5 +48,5 @@ export function useSessionProvider() {
     })();
   }, [setValue, SessionStore]);
 
-  return value;
+  return { ...value, isOwner };
 }
