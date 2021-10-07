@@ -1,3 +1,14 @@
+import { ForumListItem } from "../../component";
+import { forumTestData } from "../../data";
+
 export function ForumListPage() {
-  return <h1>Forum list Page</h1>;
+  return (
+    <div>
+      <h1>Forum list Page</h1>
+
+      {forumTestData.map((i) => (
+        <ForumListItem key={i.id} forum={i} />
+      ))}
+    </div>
+  );
 }
