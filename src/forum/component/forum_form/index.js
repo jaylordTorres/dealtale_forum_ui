@@ -1,7 +1,7 @@
 import { useForumForm } from "./hook";
 
-export function ForumForm({ initialValues, onSubmit, onNext, onCancel }) {
-  const { formik } = useForumForm({ initialValues, onSubmit, onNext });
+export function ForumForm({ initialValues, onSubmit, onCancel }) {
+  const { formik } = useForumForm({ initialValues, onSubmit });
 
   return (
     <form onSubmit={formik.handleSubmit}>
@@ -26,7 +26,9 @@ export function ForumForm({ initialValues, onSubmit, onNext, onCancel }) {
 
       <div>{formik.errors.form}</div>
       <div>
-        <button onClick={onCancel}>cancel</button>
+        <button type="button" onClick={onCancel}>
+          cancel
+        </button>
         <button type="submit">save</button>
       </div>
     </form>

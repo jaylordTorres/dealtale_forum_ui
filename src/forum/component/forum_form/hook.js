@@ -1,6 +1,6 @@
 import { useFormik } from "formik";
 
-export function useForumForm({ initialValues, onSubmit, onNext }) {
+export function useForumForm({ initialValues, onSubmit }) {
   const formik = useFormik({
     initialValues: initialValues || { title: "", content: "" },
 
@@ -12,11 +12,11 @@ export function useForumForm({ initialValues, onSubmit, onNext }) {
         });
 
         resetForm();
-        onNext();
       } catch (e) {
         setErrors({ form: "summition failed" });
       }
     },
   });
+
   return { formik };
 }
