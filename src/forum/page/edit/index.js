@@ -3,6 +3,7 @@ import { memo } from "react";
 import { AccessDenied } from "../../../app/component";
 import { withProtection } from "../../../app/hoc";
 import { useSession } from "../../../app/provider/session/hook";
+import { ForumForm } from "../../component/forum_form";
 
 import { useForumEdit } from "./hook";
 
@@ -18,7 +19,13 @@ function Page() {
     return <AccessDenied />;
   }
 
-  return <h5>Forum Edit Page, {data && data.id}</h5>;
+  return (
+    <div>
+      <h5>Forum Edit Page, {data && data.id}</h5>
+      <hr />
+      <ForumForm />
+    </div>
+  );
 }
 
 export const ForumEditPage = memo(withProtection(Page));
