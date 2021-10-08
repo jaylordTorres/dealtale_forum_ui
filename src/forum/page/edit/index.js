@@ -8,8 +8,8 @@ import { ForumForm } from "../../component/forum_form";
 import { useForumEdit } from "./hook";
 
 function Page() {
-  const { data } = useForumEdit();
   const { isOwner } = useSession();
+  const { data, onCancel, mutation } = useForumEdit();
 
   if (!data) {
     return null;
@@ -21,9 +21,11 @@ function Page() {
 
   return (
     <div>
-      <h5>Forum Edit Page, {data && data.id}</h5>
-      <hr />
-      <ForumForm />
+      <ForumForm
+        initialValues={data}
+        onCancel={onCancel}
+        onSubmit={mutation.mutate}
+      />
     </div>
   );
 }
