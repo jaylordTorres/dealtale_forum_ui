@@ -1,6 +1,5 @@
-import env from "react-dotenv";
-
+// todo: migrato dotenv
 export const config = {
-  api: env.API_URL,
-  client_key: env.CLIENT_KEY,
+  api: "http://localhost:3003/api/v1",
+  client_key: "e923122c-2dac-4651-a3af-67e5470a99d9",
 };
