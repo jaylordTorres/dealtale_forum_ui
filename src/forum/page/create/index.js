@@ -1,3 +1,16 @@
+import { ForumForm } from "../../component/forum_form";
+
+import { useForumCreate } from "./hook";
+
 export function ForumCreatePage() {
-  return <h1>Forum Create Page</h1>;
+  const { onCancel, mutation } = useForumCreate();
+
+  return (
+    <div>
+      <ForumForm
+        onCancel={onCancel}
+        onSubmit={mutation.mutate}
+      />
+    </div>
+  );
 }

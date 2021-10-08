@@ -6,8 +6,6 @@ export function ForumListPage() {
 
   return (
     <div>
-      <h2>Forum list Page</h2>
-
       {data.map((i) => (
         <ForumListItem key={i._id} forum={i} />
       ))}
