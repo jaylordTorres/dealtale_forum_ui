@@ -4,7 +4,6 @@ export function Store(key) {
       const value = JSON.stringify(data);
       return localStorage.setItem(key, value);
     } catch (e) {
-      console.log(e);
       throw new Error(`Failed to save ${key}: ${data}`);
     }
   };
@@ -14,7 +13,6 @@ export function Store(key) {
       const value = await localStorage.getItem(key);
       return JSON.parse(value);
     } catch (e) {
-      console.log(e);
       throw new Error(`Failed parse ${key}: $[value} `);
     }
   };
