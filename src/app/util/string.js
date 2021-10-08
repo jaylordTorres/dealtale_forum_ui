@@ -1,4 +1,5 @@
+import { v4 } from "uuid";
+
 export function generateID() {
-  // temp id generator
-  return (Math.random() * 99999999999999).toFixed(0).toString();
+  return v4();
 }

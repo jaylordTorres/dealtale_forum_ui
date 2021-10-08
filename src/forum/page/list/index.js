@@ -1,13 +1,15 @@
 import { ForumListItem } from "../../component";
-import { forumTestData } from "../../data";
+import { useForumList } from "./hook";
 
 export function ForumListPage() {
+  const { data } = useForumList();
+
   return (
     <div>
       <h1>Forum list Page</h1>
 
-      {forumTestData.map((i) => (
-        <ForumListItem key={i.id} forum={i} />
+      {data.map((i) => (
+        <ForumListItem key={i._id} forum={i} />
       ))}
     </div>
   );

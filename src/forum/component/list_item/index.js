@@ -1,6 +1,6 @@
 import { useForumListItem } from "./hook";
 
-export function ForumListItem({ forum: { id, title, content } }) {
+export function ForumListItem({ forum: { _id: id, title, content } }) {
   const { onClick } = useForumListItem({ id });
 
   return (
