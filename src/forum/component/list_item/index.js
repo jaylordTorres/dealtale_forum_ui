@@ -1,12 +1,13 @@
 import { useForumListItem } from "./hook";
+import { StyledListItem } from "./styled";
 
 export function ForumListItem({ forum: { _id: id, title, content } }) {
   const { onClick } = useForumListItem({ id });
 
   return (
-    <div onClick={onClick}>
+    <StyledListItem onClick={onClick}>
       <h4>{title}</h4>
-      <div>{content}</div>
-    </div>
+      <section>{content}</section>
+    </StyledListItem>
   );
 }
