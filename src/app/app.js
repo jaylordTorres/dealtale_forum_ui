@@ -1,12 +1,7 @@
 import { BrowserRouter } from "react-router-dom";
-import { ServiceProvider, Store, SessionProvider } from "./provider";
+import { ServiceProvider, SessionProvider } from "./provider";
 import { AppRouter } from "./router";
-
-// dependecies
-const store = {
-  session: Store("session"),
-  // initialize more services here
-};
+import { store } from "./service";
 
 function App() {
   return (
