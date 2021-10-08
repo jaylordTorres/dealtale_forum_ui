@@ -1,8 +1,10 @@
 import { useFormik } from "formik";
+import { ForumFormValidation } from "./validation";
 
 export function useForumForm({ initialValues, onSubmit }) {
   const formik = useFormik({
     initialValues: initialValues || { title: "", content: "" },
+    validationSchema: ForumFormValidation,
 
     onSubmit: async (values, { setErrors, resetForm }) => {
       try {

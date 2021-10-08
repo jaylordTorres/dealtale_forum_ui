@@ -15,6 +15,9 @@ export function ForumForm({ initialValues, onSubmit, onCancel }) {
             onChange={formik.handleChange}
             value={formik.values.title}
           />
+          <span className="error">
+            {formik.touched.content && formik.errors.title}
+          </span>
         </div>
         <div>
           <textarea
@@ -25,6 +28,9 @@ export function ForumForm({ initialValues, onSubmit, onCancel }) {
             onChange={formik.handleChange}
             value={formik.values.content}
           />
+          <span className="error">
+            {formik.touched.content && formik.errors.content}
+          </span>
         </div>
 
         <div>{formik.errors.form}</div>

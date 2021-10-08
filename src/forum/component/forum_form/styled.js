@@ -8,4 +8,8 @@ export const StyledForumForm = styled("div")`
     margin: 8px;
     width: 100%;
   }
+  .error {
+    padding: 8px;
+    color: red;
+  }
 `;
