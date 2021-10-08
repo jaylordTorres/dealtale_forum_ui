@@ -18,7 +18,7 @@ function Page() {
     return <AccessDenied />;
   }
 
-  return <h1>Forum Edit Page, {data && data.id}</h1>;
+  return <h5>Forum Edit Page, {data && data.id}</h5>;
 }
 
 export const ForumEditPage = memo(withProtection(Page));
