@@ -2,11 +2,12 @@ import { useCallback } from "react";
 import { useMutation } from "react-query";
 import { useHistory } from "react-router";
 
-import { poster } from "../../../app/util/request";
+import { useService } from "../../../app/provider/service/hook";
 
 export function useForumCreate() {
   const history = useHistory();
-  const mutation = useMutation((values) => poster(`forum/`, values), {
+  const { api } = useService();
+  const mutation = useMutation((values) => api.poster(`forum/`, values), {
     onSuccess: () => history.goBack(),
   });
 

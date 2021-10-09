@@ -2,12 +2,14 @@ import { useCallback, useEffect } from "react";
 import { useQuery } from "react-query";
 import { useHistory } from "react-router";
 
-import { fetcher } from "../../../app/util/request";
+import { useService } from "../../../app/provider/service/hook";
 import { paths } from "../../path";
 
 export function useForumList() {
   const history = useHistory();
-  const { data, refetch } = useQuery(`forum`, fetcher);
+  const { api } = useService();
+  const { data, refetch } = useQuery(`forum`, api.fetcher);
+
   const onCreate = useCallback(() => history.push(paths.create), [history]);
 
   useEffect(() => {

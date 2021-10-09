@@ -2,13 +2,14 @@ import { useCallback } from "react";
 import { useQuery, useMutation } from "react-query";
 import { useHistory, useParams } from "react-router";
 
-import { fetcher, patcher } from "../../../app/util/request";
+import { useService } from "../../../app/provider/service/hook";
 
 export function useForumEdit() {
   const history = useHistory();
   const { id } = useParams();
-  const { data } = useQuery(`forum/${id}`, fetcher);
-  const mutation = useMutation((values) => patcher(`forum/${id}`, values), {
+  const { api } = useService();
+  const { data } = useQuery(`forum/${id}`, api.fetcher);
+  const mutation = useMutation((values) => api.patcher(`forum/${id}`, values), {
     onSuccess: () => history.goBack(),
   });
 
