@@ -1,7 +1,3 @@
-import { Store } from "./provider";
+import { getServices } from "./provider";
 
-// dependecies
-export const store = {
-  session: Store("session"),
-  // initialize more services here
-};
+export const services = getServices();

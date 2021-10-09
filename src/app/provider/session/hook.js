@@ -21,7 +21,7 @@ export function useSession() {
 export function useSessionProvider() {
   const [value, setValue] = useState({ id: null });
   const {
-    store: { session: SessionStore },
+    stores: { session: SessionStore },
   } = useService();
 
   const isOwner = useCallback(
@@ -34,7 +34,7 @@ export function useSessionProvider() {
   // initialized user session
   useEffect(() => {
     (async () => {
-      const localSession = await SessionStore.getItem();
+      const localSession = await SessionStore.item();
 
       if (localSession) {
         setValue((s) => ({ ...s, ...localSession }));
@@ -42,7 +42,7 @@ export function useSessionProvider() {
         // dont have sesesion then saved on browser
         const value = { id: generateID() };
 
-        await SessionStore.saveItem(value);
+        await SessionStore.save(value);
         setValue((i) => ({ ...i, ...value }));
       }
     })();

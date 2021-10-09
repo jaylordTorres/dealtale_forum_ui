@@ -4,8 +4,8 @@ import { QueryClient, QueryClientProvider } from "react-query";
 
 const client = new QueryClient();
 
-export function ServiceProvider({ store, children }) {
-  const value = useServiceProvider({ store });
+export function ServiceProvider({ services, children }) {
+  const value = useServiceProvider(services);
 
   return (
     <ServiceContext.Provider value={value}>

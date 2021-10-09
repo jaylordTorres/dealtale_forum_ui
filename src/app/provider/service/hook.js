@@ -8,13 +8,13 @@ export function useService() {
     throw new Error("useService must be wrapped inside ServiceProvider.");
   }
 
-  return { store: service.store };
+  return { stores: service.stores, api: service.api };
 }
 
 // private
-export function useServiceProvider({ store, api }) {
+export function useServiceProvider({ stores, api }) {
   return {
-    store: store ? store : {},
+    stores: stores ? stores : {},
     api: api ? api : {},
   };
 }

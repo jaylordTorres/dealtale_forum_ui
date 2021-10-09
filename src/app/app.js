@@ -1,12 +1,12 @@
 import { BrowserRouter } from "react-router-dom";
 import { ServiceProvider, SessionProvider } from "./provider";
 import { AppRouter } from "./router";
-import { store } from "./service";
+import { services } from "./service";
 
 function App() {
   return (
     <div className="App">
-      <ServiceProvider store={store}>
+      <ServiceProvider services={services}>
         <SessionProvider>
           <BrowserRouter>
             <AppRouter />
