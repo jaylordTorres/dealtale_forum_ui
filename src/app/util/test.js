@@ -1,6 +1,8 @@
 import { BrowserRouter } from "react-router-dom";
 import { ServiceProvider, SessionProvider } from "../provider";
 
+export * as faker from "faker";
+
 // // dependecies
 // export const services = {
 //   session: Store("session"),
