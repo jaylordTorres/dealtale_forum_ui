@@ -9,22 +9,22 @@ import { useForumEdit } from "./hook";
 
 function Page() {
   const { isOwner } = useSession();
-  const { data, onCancel, mutation } = useForumEdit();
+  const { value, onCancel, onUpdate } = useForumEdit();
 
-  if (!data) {
+  if (!value) {
     return null;
   }
 
-  if (data && !isOwner(data.sessionId)) {
+  if (value && !isOwner(value.sessionId)) {
     return <AccessDenied />;
   }
 
   return (
     <div>
       <ForumForm
-        initialValues={data}
+        initialValues={value}
         onCancel={onCancel}
-        onSubmit={mutation.mutate}
+        onSubmit={onUpdate}
       />
     </div>
   );

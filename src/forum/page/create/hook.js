@@ -1,17 +1,21 @@
 import { useCallback } from "react";
-import { useMutation } from "react-query";
 import { useHistory } from "react-router";
 
-import { useService } from "../../../app/provider/service/hook";
+import { useForum } from "../../provider";
 
 export function useForumCreate() {
   const history = useHistory();
-  const { api } = useService();
-  const mutation = useMutation((values) => api.poster(`forum/`, values), {
-    onSuccess: () => history.goBack(),
-  });
+  const { create } = useForum();
+
+  const onCreate = useCallback(
+    async (values) => {
+      await create({ values });
+      history.goBack();
+    },
+    [create, history]
+  );
 
   const onCancel = useCallback(() => history.goBack(), [history]);
 
-  return { mutation, onCancel };
+  return { onCreate, onCancel };
 }

@@ -4,14 +4,14 @@ import { useForumList } from "./hook";
 import { StyledForumList } from "./styled";
 
 export function ForumListPage() {
-  const { data, onCreate } = useForumList();
+  const { values, onCreate } = useForumList();
 
   return (
     <StyledForumList>
       <div>
         <Button onClick={onCreate}>Add listing</Button>
       </div>
-      {data.map((i) => (
+      {values.map((i) => (
         <ForumListItem key={i._id} forum={i} />
       ))}
     </StyledForumList>
