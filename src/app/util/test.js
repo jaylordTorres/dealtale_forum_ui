@@ -1,19 +1,20 @@
 import { BrowserRouter } from "react-router-dom";
 import { ServiceProvider, SessionProvider } from "../provider";
 
+// utils of fake data
 export * as faker from "faker";
 
-// // dependecies
-// export const services = {
-//   session: Store("session"),
-//   // initialize more services here
-// };
 
-export function createTestProviers(services) {
+export function createTestProviers(
+  services,
+  Wrapper = ({ children }) => children
+) {
   return ({ children }) => (
     <ServiceProvider services={services}>
       <SessionProvider>
-        <BrowserRouter>{children}</BrowserRouter>
+        <BrowserRouter>
+          <Wrapper>{children}</Wrapper>
+        </BrowserRouter>
       </SessionProvider>
     </ServiceProvider>
   );
