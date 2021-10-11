@@ -1,3 +1,4 @@
+import { ForumProptype } from "../../../app/prop_type";
 import { useForumListItem } from "./hook";
 import { StyledListItem } from "./styled";
 
@@ -13,3 +14,7 @@ export function ForumListItem({
     </StyledListItem>
   );
 }
+
+ForumListItem.propTypes = {
+  forum: ForumProptype.isRequired,
+};

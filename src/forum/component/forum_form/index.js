@@ -1,4 +1,6 @@
+import PropTypes from "prop-types";
 import { Button } from "../../../app/component";
+import { ForumProptype } from "../../../app/prop_type";
 import { useForumForm } from "./hook";
 import { StyledForumForm } from "./styled";
 
@@ -44,3 +46,9 @@ export function ForumForm({ initialValues, onSubmit, onCancel }) {
     </StyledForumForm>
   );
 }
+
+ForumForm.propTypes = {
+  initialValues: ForumProptype,
+  onSubmit: PropTypes.func.isRequired,
+  onCancel: PropTypes.func.isRequired,
+};

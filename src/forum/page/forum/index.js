@@ -1,6 +1,6 @@
 import { Route, Switch } from "react-router";
 
-import { ForumLayout } from "../../component/layout";
+import { ForumLayout } from "../../component";
 import { paths } from "../../path";
 import { ForumProvider } from "../../provider";
 
