@@ -18,4 +18,8 @@ export class MockedStorage extends StorageBase {
   item = async () => {
     return this.data;
   };
+
+  load = async (fn, d) => {
+    return fn(d);
+  };
 }

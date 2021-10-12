@@ -28,4 +28,18 @@ export class Storage extends StorageBase {
       throw new Error(`Failed parse ${this.key}: $[value} `);
     }
   };
+
+  load = async (fn, d = {}) => {
+    try {
+      const value = await localStorage.getItem(this.key);
+      if (value) {
+        const parsed = await JSON.parse(value);
+        fn(parsed);
+      } else {
+        fn(d);
+      }
+    } catch (e) {
+      fn(d);
+    }
+  };
 }
