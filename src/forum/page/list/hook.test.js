@@ -21,23 +21,19 @@ describe("forum/page/list/hook", () => {
   const wrapper = createTestProviers(services, ForumProvider);
 
   it("should give correct return", async () => {
-    const { result, waitForNextUpdate } = renderHook(() => useForumList(), {
+    const { result } = renderHook(() => useForumList(), {
       wrapper,
     });
-
-    await waitForNextUpdate();
 
     expect(result.current.values).toEqual(expect.any(Array));
     expect(result.current.onCreate).toEqual(expect.any(Function));
   });
 
-  // todo: fix after forumProvider refactored
-  // it("should fetch data", async () => {
-  //   const { result, waitForNextUpdate } = renderHook(() => useForumList(), {
-  //     wrapper,
-  //   });
+  it("should fetch data", async () => {
+    const { result } = renderHook(() => useForumList(), {
+      wrapper,
+    });
 
-  //   // await waitForNextUpdate();
-  //   expect(result.current.data).toStrictEqual(forums);
-  // });
+    expect(result.current.values).toStrictEqual(forums);
+  });
 });
