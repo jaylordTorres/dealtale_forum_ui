@@ -33,19 +33,9 @@ export function useSessionProvider() {
 
   // initialized user session
   useEffect(() => {
-    (async () => {
-      const localSession = await SessionStore.item();
-
-      if (localSession) {
-        setValue((s) => ({ ...s, ...localSession }));
-      } else {
-        // dont have sesesion then saved on browser
-        const value = { id: generateID() };
-
-        await SessionStore.save(value);
-        setValue((i) => ({ ...i, ...value }));
-      }
-    })();
+    SessionStore.load((v) => setValue((s) => ({ ...s, ...v })), {
+      id: generateID(),
+    });
   }, [setValue, SessionStore]);
 
   return { ...value, isOwner };
