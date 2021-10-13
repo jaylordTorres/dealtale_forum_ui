@@ -1,11 +1,8 @@
 import { cleanup, renderHook } from "@testing-library/react-hooks";
 
-import { AppMockedRequest, MockedStorage } from "../../../app/util/mock";
-import { createTestProviers, faker } from "../../../app/util/test";
-import { useForumList } from "./hook";
 import { forums } from "../../data";
-import { ForumProvider } from "../../provider";
 import { getForumTestUtils } from "../../provider/test";
+import { useForumList } from "./hook";
 
 describe("unit test: forum/page/list/hook", () => {
   afterAll(cleanup);
@@ -17,7 +14,7 @@ describe("unit test: forum/page/list/hook", () => {
   });
 
   it("should correctly defined exports", async () => {
-    expect(useForumList).toEqual(expect.any(Function));
+    expect(useForumList).toBeDefined();
   });
 
   it("should give correct return types", async () => {

@@ -2,10 +2,10 @@ import { cleanup } from "@testing-library/react-hooks";
 
 import { StyledForumList } from "./styled";
 
-describe("forum/page/list/styled", () => {
+describe("unit test: forum/page/list/styled", () => {
   afterAll(cleanup);
 
-  it("should defined StyledForumList", async () => {
+  it("should correctly defined exports", async () => {
     expect(StyledForumList).toBeDefined();
   });
 
