@@ -3,7 +3,7 @@ import { getForumTestUtils } from "../../provider/test";
 import { createForumItem } from "../../data";
 import { UiForumListing } from "./ui";
 
-describe("unit test: forum/page/list/index", () => {
+describe("unit test: forum/page/list/ui", () => {
   afterEach(cleanup);
 
   const values = [createForumItem(), createForumItem()];
