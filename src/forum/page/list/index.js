@@ -1,19 +1,13 @@
-import { Button } from "../../../app/component";
-import { ForumListItem } from "../../component";
 import { useForumList } from "./hook";
-import { StyledForumList } from "./styled";
+import { UiForumListing } from "./ui";
 
 export function ForumListPage() {
   const { values, onCreate } = useForumList();
 
-  return (
-    <StyledForumList>
-      <div>
-        <Button onClick={onCreate}>Add listing</Button>
-      </div>
-      {values.map((i) => (
-        <ForumListItem key={i._id} forum={i} />
-      ))}
-    </StyledForumList>
-  );
+  const uiProps = {
+    values,
+    onCreate,
+  };
+
+  return <UiForumListing {...uiProps} />;
 }
