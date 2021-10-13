@@ -20,7 +20,7 @@ describe("unit test: forum/page/list/index", () => {
       );
     });
 
-    expect(screen.getByText("Add listing")).toBe("BUTTON");
+    expect(screen.getByText("Add listing").tagName).toBe("BUTTON");
   });
 
   it("should display forum listing", async () => {

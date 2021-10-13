@@ -1,7 +1,7 @@
 import faker from "faker";
 import { ArrayUtil } from "../app/util";
 
-const createItems = () => {
+export const createForumItem = () => {
   return {
     _id: faker.datatype.uuid(),
     sessionId: faker.datatype.uuid(),
@@ -10,4 +10,4 @@ const createItems = () => {
   };
 };
 
-export const forums = ArrayUtil.generateArrays(5, createItems);
+export const forums = ArrayUtil.generateArrays(5, createForumItem);
