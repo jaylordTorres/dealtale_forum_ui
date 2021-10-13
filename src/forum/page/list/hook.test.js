@@ -5,35 +5,27 @@ import { createTestProviers, faker } from "../../../app/util/test";
 import { useForumList } from "./hook";
 import { forums } from "../../data";
 import { ForumProvider } from "../../provider";
+import { getForumTestUtils } from "../../provider/test";
 
-describe("forum/page/list/hook", () => {
+describe("unit test: forum/page/list/hook", () => {
   afterAll(cleanup);
 
-  const services = {
-    stores: {
-      session: new MockedStorage("session", { id: faker.datatype.uuid() }),
-    },
-    api: new AppMockedRequest({
-      forum: { data: forums },
-    }),
-  };
+  const { wrapper } = getForumTestUtils();
 
-  const wrapper = createTestProviers(services, ForumProvider);
+  const { result } = renderHook(() => useForumList(), {
+    wrapper,
+  });
 
-  it("should give correct return", async () => {
-    const { result } = renderHook(() => useForumList(), {
-      wrapper,
-    });
+  it("should correctly defined exports", async () => {
+    expect(useForumList).toEqual(expect.any(Function));
+  });
 
+  it("should give correct return types", async () => {
     expect(result.current.values).toEqual(expect.any(Array));
     expect(result.current.onCreate).toEqual(expect.any(Function));
   });
 
-  it("should fetch data", async () => {
-    const { result } = renderHook(() => useForumList(), {
-      wrapper,
-    });
-
+  it("should fetch valid data", async () => {
     expect(result.current.values).toStrictEqual(forums);
   });
 });
