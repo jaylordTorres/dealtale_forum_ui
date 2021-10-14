@@ -10,14 +10,14 @@ export class AppMockedRequest extends AppRequestBase {
   }
 
   fetcher = async ({ queryKey }) => {
-    return this.data[queryKey];
+    return this.data["get"][queryKey];
   };
 
   poster = async (url, data) => {
-    return this.data[url];
+    return this.data["post"][url];
   };
 
   patcher = async (url, data) => {
-    return this.data[url];
+    return this.data["put"][url];
   };
 }

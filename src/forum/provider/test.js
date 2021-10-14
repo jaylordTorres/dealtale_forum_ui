@@ -10,7 +10,7 @@ export function getForumTestUtils() {
       session: new MockedStorage("session", { id: faker.datatype.uuid() }),
     },
     api: new AppMockedRequest({
-      forum: { data: forums },
+      get: { forum: { data: forums } },
     }),
   };
 
