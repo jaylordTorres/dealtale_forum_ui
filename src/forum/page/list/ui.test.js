@@ -10,45 +10,42 @@ import { createForumItem } from "../../data";
 import { UiForumListing } from "./ui";
 
 describe("unit test: forum/page/list/ui", () => {
-  afterEach(cleanup);
-
+  let onClick;
   const values = [createForumItem(), createForumItem()];
   const { wrapper: Providers } = getForumTestUtils();
 
-  it("should correctly defined exports", async () => {
-    expect(UiForumListing).toBeDefined();
-  });
-
-  it("should display all forum listing", async () => {
-    const onClick = jest.fn();
-
-    await act(async () => {
+  beforeEach(async () => {
+    onClick = jest.fn();
+    act(() => {
       render(
         <Providers>
           <UiForumListing onCreate={onClick} values={values} />
         </Providers>
       );
     });
+  });
 
+  afterEach(() => {
+    onClick = null;
+    cleanup();
+  });
+
+  it("should correctly defined exports", async () => {
+    expect(UiForumListing).toBeDefined();
+  });
+
+  it("should display all forum items", async () => {
     for (const i in values) {
       expect(screen.getByText(values[i].title)).toBeDefined();
       expect(screen.getByText(values[i].content)).toBeDefined();
     }
   });
 
-  it("should display add list button, clickable", async () => {
-    const onClick = jest.fn();
-
-    await act(async () => {
-      render(
-        <Providers>
-          <UiForumListing onCreate={onClick} values={values} />
-        </Providers>
-      );
-    });
-
+  it("should display add list button", async () => {
     expect(screen.getByText("Add listing").tagName).toBe("BUTTON");
+  });
 
+  it("should Add list button work correctly", async () => {
     act(() => {
       fireEvent.click(screen.getByText("Add listing"));
     });
