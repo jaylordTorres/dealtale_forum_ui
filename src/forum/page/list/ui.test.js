@@ -1,4 +1,10 @@
-import { cleanup, render, screen, act } from "@testing-library/react";
+import {
+  cleanup,
+  render,
+  screen,
+  act,
+  fireEvent,
+} from "@testing-library/react";
 import { getForumTestUtils } from "../../provider/test";
 import { createForumItem } from "../../data";
 import { UiForumListing } from "./ui";
@@ -14,10 +20,12 @@ describe("unit test: forum/page/list/ui", () => {
   });
 
   it("should display all forum listing", async () => {
+    const onClick = jest.fn();
+
     await act(async () => {
       render(
         <Providers>
-          <UiForumListing onCreate={() => {}} values={values} />
+          <UiForumListing onCreate={onClick} values={values} />
         </Providers>
       );
     });
@@ -28,15 +36,23 @@ describe("unit test: forum/page/list/ui", () => {
     }
   });
 
-  it("should display add list button", async () => {
+  it("should display add list button, clickable", async () => {
+    const onClick = jest.fn();
+
     await act(async () => {
       render(
         <Providers>
-          <UiForumListing onCreate={() => {}} values={values} />
+          <UiForumListing onCreate={onClick} values={values} />
         </Providers>
       );
     });
 
     expect(screen.getByText("Add listing").tagName).toBe("BUTTON");
+
+    act(() => {
+      fireEvent.click(screen.getByText("Add listing"));
+    });
+
+    expect(onClick).toHaveBeenCalled();
   });
 });
