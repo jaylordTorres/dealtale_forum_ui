@@ -1,24 +1,28 @@
-import { ForumProvider } from ".";
-import { AppMockedRequest, MockedStorage } from "../../app/util/mock";
+import { MockedStorage } from "../../app/util/mock";
 import { createTestProviers, faker } from "../../app/util/test";
+import { AppRequest } from "../../app/provider/service/api/request";
 import { forums } from "../data";
+import { ForumProvider } from "./provider";
+
+export const MockedSessionStorage = new MockedStorage("session", {
+  id: faker.datatype.uuid(),
+});
+
+export const api = new AppRequest(MockedSessionStorage);
 
 export const services = {
   stores: {
-    session: new MockedStorage("session", { id: faker.datatype.uuid() }),
+    session: MockedSessionStorage,
   },
-  api: new AppMockedRequest({
-    get: { forum: { data: forums } },
-  }),
+  api: api,
 };
 
-export function getForumTestUtils() {
-  // provide all provider need on this forum module
+export function getForumTestWrapper() {
+  // provide all providers need on this forum module
 
-  const wrapper = createTestProviers(services, ForumProvider);
-
-  return {
-    wrapper,
-    services,
-  };
+  return createTestProviers(services, ForumProvider);
 }
+
+export const data = {
+  forums,
+};

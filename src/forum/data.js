@@ -10,4 +10,4 @@ export const createForumItem = () => {
   };
 };
 
-export const forums = ArrayUtil.generateArrays(5, createForumItem);
+export const forums = ArrayUtil.generateArrays(1, createForumItem);
