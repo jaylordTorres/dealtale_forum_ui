@@ -1,21 +1,26 @@
-import { cleanup, render, screen, act } from "@testing-library/react";
-import { getForumTestUtils } from "../../provider/test";
-import { forums } from "../../data";
+import { cleanup, screen, render } from "@testing-library/react";
+import { getForumTestWrapper, data, api } from "../../provider/test";
+import { QueryClientInstance } from "../../../app/provider";
 import { ForumListPage } from "./index";
 
-describe("unit test: forum/page/list/index", () => {
-  const { wrapper: Providers } = getForumTestUtils();
+const forums = data.forums;
+const wrapper = getForumTestWrapper();
 
+describe("unit test: forum/page/list/index", () => {
   beforeEach(() => {
-    act(() => {
-      render(
-        <Providers>
-          <ForumListPage />
-        </Providers>
-      );
+    jest.spyOn(api, "fetcher").mockImplementation(() => {
+      return { data: forums };
+    });
+
+    render(<ForumListPage />, {
+      wrapper,
     });
   });
-  afterEach(cleanup);
+
+  afterEach(() => {
+    cleanup();
+    QueryClientInstance.clear();
+  });
 
   it("should correctly defined exports", async () => {
     expect(ForumListPage).toBeDefined();

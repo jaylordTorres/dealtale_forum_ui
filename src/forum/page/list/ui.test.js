@@ -5,24 +5,24 @@ import {
   act,
   fireEvent,
 } from "@testing-library/react";
-import { getForumTestUtils } from "../../provider/test";
+import { getForumTestWrapper } from "../../provider/test";
 import { createForumItem } from "../../data";
 import { UiForumListing } from "./ui";
 
 describe("unit test: forum/page/list/ui", () => {
   let onClick;
   const values = [createForumItem(), createForumItem()];
-  const { wrapper: Providers } = getForumTestUtils();
+  const Providers = getForumTestWrapper();
 
   beforeEach(async () => {
     onClick = jest.fn();
-    act(() => {
-      render(
-        <Providers>
-          <UiForumListing onCreate={onClick} values={values} />
-        </Providers>
-      );
-    });
+    // act(() => {
+    render(
+      <Providers>
+        <UiForumListing onCreate={onClick} values={values} />
+      </Providers>
+    );
+    // });
   });
 
   afterEach(() => {
