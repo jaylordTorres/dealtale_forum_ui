@@ -5,9 +5,9 @@ import {
   act,
   fireEvent,
 } from "@testing-library/react";
-import { getForumTestWrapper } from "../../provider/test";
-import { createForumItem } from "../../data";
-import { UiForumListing } from "./ui";
+import { getForumTestWrapper } from "../../../provider/test";
+import { createForumItem } from "../../../data";
+import { UiForumListing } from "../ui";
 
 describe("unit test: forum/page/list/ui", () => {
   let onClick;

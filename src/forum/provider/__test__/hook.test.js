@@ -1,10 +1,10 @@
 import { cleanup } from "@testing-library/react";
 import { act, renderHook } from "@testing-library/react-hooks";
-import { QueryClientInstance } from "../../app/provider";
-import { createTestProviers } from "../../app/util/test";
-import { forums } from "../data";
-import { useForum, useForumProvider } from "./hook";
-import { api, getForumTestWrapper, services } from "./test";
+import { QueryClientInstance } from "../../../app/provider";
+import { createTestProviers } from "../../../app/util/test";
+import { forums } from "../../data";
+import { useForum, useForumProvider } from "../hook";
+import { api, getForumTestWrapper, services } from "../test";
 
 describe("unit test: forum/provider/hook: useForum", () => {
   const wrapper = getForumTestWrapper();

@@ -1,7 +1,7 @@
 import { cleanup, screen, render } from "@testing-library/react";
-import { getForumTestWrapper, data, api } from "../../provider/test";
-import { QueryClientInstance } from "../../../app/provider";
-import { ForumListPage } from "./index";
+import { getForumTestWrapper, data, api } from "../../../provider/test";
+import { QueryClientInstance } from "../../../../app/provider";
+import { ForumListPage } from "../index";
 
 const forums = data.forums;
 const wrapper = getForumTestWrapper();

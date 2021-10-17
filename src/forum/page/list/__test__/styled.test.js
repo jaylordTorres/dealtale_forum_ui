@@ -1,6 +1,6 @@
 import { cleanup } from "@testing-library/react-hooks";
 
-import { StyledForumList } from "./styled";
+import { StyledForumList } from "../styled";
 
 describe("unit test: forum/page/list/styled", () => {
   afterAll(cleanup);
