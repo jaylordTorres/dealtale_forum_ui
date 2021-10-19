@@ -14,7 +14,7 @@ export function useService() {
 // private
 export function useServiceProvider({ stores, api }) {
   return {
-    stores: stores ? stores : {},
-    api: api ? api : {},
+    stores,
+    api,
   };
 }
