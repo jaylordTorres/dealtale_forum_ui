@@ -1,13 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './app/app';
-import reportWebVitals from './app/report_web_vitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import reportWebVitals from "./app/report_web_vitals";
+import { Application } from "./app/app";
+import { appRoutes } from "./app/router";
+import { services } from "./service";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Application routes={appRoutes} services={services} />
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

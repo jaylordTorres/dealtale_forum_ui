@@ -1,20 +1,18 @@
 import { BrowserRouter } from "react-router-dom";
 import { ServiceProvider, SessionProvider } from "./provider";
-import { AppRouter } from "./router";
-import { services } from "./service";
+import { RenderRoutes } from "./util";
 
-function App() {
+export function Application({ children, routes, services }) {
   return (
     <div className="App">
       <ServiceProvider services={services}>
         <SessionProvider>
           <BrowserRouter>
-            <AppRouter />
+            <RenderRoutes routes={routes} />
+            {children}
           </BrowserRouter>
         </SessionProvider>
       </ServiceProvider>
     </div>
   );
 }
-
-export default App;
