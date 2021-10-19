@@ -1,8 +1,9 @@
 import { cleanup } from "@testing-library/react";
 import { renderHook, act } from "@testing-library/react-hooks";
 import { QueryClientInstance } from "../../../../app/provider";
+import { api } from "../../../../app/util/test";
 
-import { getForumTestWrapper, data, api } from "../../../provider/test";
+import { getForumTestWrapper, data  } from "../../../provider/test";
 import { useForumList } from "../hook";
 
 describe("unit test: forum/page/list/hook", () => {

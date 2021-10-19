@@ -2,11 +2,10 @@ import { useContext } from "react";
 import { cleanup, render, screen } from "@testing-library/react";
 import { act, renderHook } from "@testing-library/react-hooks";
 import { QueryClientInstance } from "../../../app/provider";
-import { createTestProviers } from "../../../app/util/test";
+import { createTestProviers, api, services } from "../../../app/util/test";
 import { forums } from "../../data";
 import { ForumContext } from "../constant";
 import { ForumProvider } from "../provider";
-import { api, services } from "../test";
 
 const Providers = createTestProviers(services);
 const wrapper = ({ children }) => (

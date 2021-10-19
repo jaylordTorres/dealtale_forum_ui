@@ -1,5 +1,6 @@
 import { cleanup, screen, render } from "@testing-library/react";
-import { getForumTestWrapper, data, api } from "../../../provider/test";
+import { api } from "../../../../app/util/test";
+import { getForumTestWrapper, data } from "../../../provider/test";
 import { QueryClientInstance } from "../../../../app/provider";
 import { ForumListPage } from "../index";
 
